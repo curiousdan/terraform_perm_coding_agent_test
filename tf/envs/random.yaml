@@ -1,0 +1,25 @@
+---
+# Random configuration file
+metadata:
+  version: "1.0"
+  created: "2024-01-01"
+  description: "Random YAML configuration for testing"
+
+settings:
+  debug: true
+  timeout: 300
+  retry_count: 3
+
+regions:
+  - name: "us-central1"
+    zones: ["us-central1-a", "us-central1-b", "us-central1-c"]
+  - name: "us-east1"
+    zones: ["us-east1-a", "us-east1-b", "us-east1-d"]
+
+sample_data:
+  numbers: [1, 2, 3, 5, 8, 13, 21]
+  colors: ["red", "green", "blue", "yellow"]
+  flags:
+    feature_a: true
+    feature_b: false
+    feature_c: true

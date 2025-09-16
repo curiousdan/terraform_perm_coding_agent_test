@@ -1,0 +1,59 @@
+Instructions for creating this repo
+
+```
+I want you to create a test repository. It's gonna be a Mock of a Terraform repository, for creating assets on GCP.
+
+the tree should look like
+
+README.md
+├── linter
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── mock_constants.py
+│   ├── mock_linter.py
+├── tf
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── envs
+│   ├── modules
+
+
+within tf/modules
+__init__.py
+
+Inside this file, create SomeClass1 and SomeClass2
+
+Also, somewhere in this repo create a mock TerraformStack class. And a mock SomeDeployment class
+
+
+And within tf/envs
+├── random.yaml
+├── region1-dev-1234
+│   ├── poodle_configs_dev.py
+│   ├── golden_configs_dev.py
+│   └── main.py
+├── region1-prod-23456
+│   ├── poodle_configs_prod.py
+│   ├── golden_configs_prod.py
+    └── main.py
+├── region2-dev-7546
+│   ├── german_configs_dev.py
+    └── main.py
+├── region2-prod-8753
+│   ├── german_configs_prod.py
+    └── main.py
+
+random.yaml can be anything
+
+within each of these environments, the {stack}_configs_prod.py should define a frozenset sc1 with SomeClass1 and another sc2 frozenset with SomeClass2
+
+The main.py should create a TerraformStack, with a fake network & gcs assets.
+
+the network stack should have a .someproperty( ...) for users 1 & 2. mix it up. 
+
+There should be a SomeDeployment in main.py for "poodle" and "aussie" for region1 and "german" for region2
+
+The SomeDeployment(...) should use the configs defined in {stack}_configs_{env}.py like this
+
+`SomeDeployment(...).add_sc1(sc1=<imported sc1>).add_sc2(sc2=<imported sc2>)`
+```
